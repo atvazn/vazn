@@ -1,1 +1,176 @@
-teste
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASCII Homepage</title>
+
+<style>
+
+body{
+background:black;
+color:white;
+font-family:monospace;
+margin:0;
+overflow-x:hidden;
+}
+
+/* click anywhere overlay */
+
+#overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:black;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+cursor:pointer;
+z-index:9999;
+}
+
+/* fade animation */
+
+.fade{
+opacity:0;
+animation:fadeIn 2s forwards;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
+}
+
+/* main container */
+
+.container{
+text-align:center;
+margin-top:100px;
+}
+
+/* ascii art */
+
+#ascii{
+font-size:16px;
+white-space:pre;
+outline:none;
+margin-bottom:40px;
+}
+
+/* text section */
+
+.description{
+margin:20px;
+outline:none;
+}
+
+/* buttons */
+
+.buttons{
+margin-top:40px;
+}
+
+.buttons button{
+background:black;
+border:1px solid white;
+color:white;
+padding:10px 20px;
+margin:10px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.buttons button:hover{
+background:white;
+color:black;
+}
+
+/* cursor gradient */
+
+.cursor{
+width:120px;
+height:120px;
+border-radius:50%;
+position:fixed;
+pointer-events:none;
+background:radial-gradient(circle, rgba(255,0,255,0.4), rgba(0,255,255,0.1), transparent);
+transform:translate(-50%,-50%);
+mix-blend-mode:screen;
+z-index:999;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="overlay">click anywhere</div>
+
+<div class="cursor"></div>
+
+<div class="container fade">
+
+<div id="ascii" contenteditable="true">
+
+      /\
+     /  \
+    /----\
+   /      \
+  /  ASCII \
+ /   ART    \
+/___________\
+
+(edit this ascii art)
+
+</div>
+
+<div class="description" contenteditable="true">
+Example description text here.
+Click and edit this text.
+You can describe your project, yourself, or anything.
+</div>
+
+<div class="description" contenteditable="true">
+Another editable text section.
+Write anything you want here.
+</div>
+
+<div class="buttons">
+<button onclick="window.location.href='https://example.com'">Link 1</button>
+<button onclick="window.location.href='https://example.com'">Link 2</button>
+<button onclick="window.location.href='https://example.com'">Link 3</button>
+</div>
+
+</div>
+
+<audio id="music" loop>
+<source src="YOUR-MUSIC.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* overlay click */
+
+const overlay=document.getElementById("overlay")
+const music=document.getElementById("music")
+
+overlay.addEventListener("click",()=>{
+overlay.style.display="none"
+music.play()
+})
+
+/* cursor effect */
+
+const cursor=document.querySelector(".cursor")
+
+document.addEventListener("mousemove",(e)=>{
+cursor.style.left=e.clientX+"px"
+cursor.style.top=e.clientY+"px"
+})
+
+</script>
+
+</body>
+</html>
